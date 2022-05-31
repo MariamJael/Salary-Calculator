@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Salary calculator</h1>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Sales</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>$239.99</td>
+          <td>
+            <input id="quantity-item1" type="text" placeholder="0" />
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>$129.75</td>
+          <td>
+            <input id="quantity-item2" type="text" placeholder="0" />
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>$99.95</td>
+          <td>
+            <input id="quantity-item3" type="text" placeholder="0" />
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>$350.89</td>
+          <td>
+            <input id="quantity-item4" type="text" placeholder="0" />
+          </td>
+        </tr>
+      </table>
+      <div id="output"></div>
+
+      <div class="calculate" onclick="calculator()">Calculate</div>
+      <div class="reset" onclick="reset()">Clear</div>
+    </div>
+  </body>
+  <style>
+    body {
+      border: border-box;
+      font-family: "Yanone Kaffeesatz", sans-serif;
+      text-align: center;
+      background-color: #009999;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    table {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    th,
+    td {
+      border: 1px solid white;
+      padding: 1rem;
+    }
+
+    input {
+      width: 5em;
+      margin: 0.5em;
+      border-radius: 0.2em;
+      font-family: "Yanone Kaffeesatz", sans-serif;
+      color: #004d4d;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      font-size: 1.3em;
+      border-style: none;
+      padding-top: 0.2em;
+    }
+
+    input:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    .calculate,
+    .reset {
+      width: 6em;
+      background-color: #008080;
+      border-radius: 0.4em;
+      padding-top: 10px;
+      padding-bottom: 6px;
+      border-style: none;
+      font-family: "Yanone Kaffeesatz", sans-serif;
+      font-size: 1.3em;
+      color: #ffffff;
+      margin-top: 1em;
+      margin-left: auto;
+      margin-right: auto;
+      -webkit-transition-duration: 0.4s; /* Safari*/
+      transition-duration: 0.1s;
+      border: solid 2px rgba(255, 255, 255, 0);
+      float: middle;
+    }
+
+    .reset:hover {
+      border: solid 2px rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+    .calculate:hover {
+      border: solid 2px rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function reset() {
+      document.getElementById("quantity-item1").value = 0;
+      document.getElementById("quantity-item2").value = 0;
+      document.getElementById("quantity-item3").value = 0;
+      document.getElementById("quantity-item4").value = 0;
+    }
+
+    function calculator() {
+      var gross_sales;
+      var earnings;
+
+      //taking quantity of each item
+      var quantity_item1 = parseInt(
+        document.getElementById("quantity-item1").value
+      );
+      var quantity_item2 = parseInt(
+        document.getElementById("quantity-item2").value
+      );
+      var quantity_item3 = parseInt(
+        document.getElementById("quantity-item3").value
+      );
+      var quantity_item4 = parseInt(
+        document.getElementById("quantity-item4").value
+      );
+
+      //calculating gross sale
+      gross_sales =
+        quantity_item1 * 239.99 +
+        quantity_item2 * 129.75 +
+        quantity_item3 * 99.95 +
+        quantity_item4 * 350.89;
+
+      //calculating earning 9% of gross sale plus 200 per week
+      earnings = gross_sales * 0.09 + 200;
+
+      document.getElementById("output").innerHTML +=
+        "<br/>Your earnings will be: $" + earnings.toFixed(2);
+    }
+  </script>
+</html>
